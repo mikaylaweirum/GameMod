@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background-color: #110F13;
+	font-family: 'Jim Nightshade', cursive;
+	color:#586373;
+}
+#playButton {
+	display: block;
+}
+
+#pauseButton {
+	display: none;
+}
+button{
+	background-color: #231F27;
+	height:50px;
+	width:50px;
+}
