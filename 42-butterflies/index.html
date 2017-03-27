@@ -1,0 +1,74 @@
+<html>
+<head>
+
+
+    <title>
+        Souls
+    </title>
+    <!-- let's just plop our canvas in the top left forevs -->
+    <style>
+        
+
+        canvas {
+            position: relative;
+            left: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            margin: 0 0 10;
+            float: left;
+        }
+
+        button {
+            background-color: transparent;
+            border: 0;
+            font-size: 2em;
+            float: right;
+            width: 50px;
+            text-align: left;
+        }
+
+        #playButton {
+            display: block;
+        }
+
+        #pauseButton {
+            display: none;
+        }
+
+        div {
+            width: 800;
+	    margin-left: auto;
+	    margin-right: auto;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
+    <link href="stylesheets/stylesheet.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div>
+<audio id="music" src="42butterflies.mp3" type="audio/mpeg" loop>
+</audio>
+<h1>
+    Lost Souls collected: <span id="score"></span>
+</h1>
+
+    <button id="playButton"><i class="fa fa-volume-off"></i></button>
+    <button id="pauseButton"><i class="fa fa-volume-up"></i></button>
+
+    <canvas id="canvas">
+    </canvas>
+    <script type="text/javascript" src="js/butterfly.js"></script>
+    <script type="text/javascript" src="js/level.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/sprite.js"></script>
+
+</div>
+<script type="text/javascript" src="js/platformer.js"></script>
+</body>
+</html>
