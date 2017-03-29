@@ -1,5 +1,6 @@
 function initPlayer (startingX) {
 	var newPlayer = {};
+	var playerPos;
 
 	newPlayer.reset = function () {
 		newPlayer.x = startingX;
@@ -102,6 +103,8 @@ function initPlayer (startingX) {
 			player.x += player.xVelocity;
 			player.y += player.yVelocity;
 			player.canvasX = player.x;
+			
+			playerPos = player.x;
 
 			// check for background boundaries to change the background position
 			// 0 + width/2 -> let player move up to 0

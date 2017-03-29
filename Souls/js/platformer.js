@@ -1,11 +1,17 @@
 var requestAnimationFrame, canvas, context, timeout, width, height, keys, player, friction, gravity;
 var score, scoreCard;
 var levelCleared = false;
+var levelFailed = true;
 var levelCount = 1;
 
 (initialize());
 
 function initialize () {
+	score=0
+	scoreCard=0
+	levelCleared = false;
+	levelFailed = true;
+	levelCount = 1;
 	document.getElementById('playButton').onclick = function () {
 		document.getElementById('music').play();
 		document.getElementById('playButton').style.display = 'none';
@@ -95,13 +101,38 @@ function updateGame () {
 		// we want the level to be on the bottom, so we need to draw it first
 		level.render();
 		player.render();
+		if(player.x > 4500){
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			context.fillStyle = '#586373';
+			context.font = '2em "Jim Nightshade"';
+			var message = 'Souls Missed: Press Enter to Restart';
+			context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
+			if(keys[13]){
+			initialize();
+			
+			}
+		}
 	}
+
+	else if (levelCount == 5) {
+		context.fillStyle = '#586373';
+		context.font = '2em "Jim Nightshade"';
+		var message = 'All Lost Souls Collected: Press Enter to Restart';
+		context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
+		if(keys[13]){
+			initialize();
+			
+		}
+	}
+	
 	else {
 		// setup a message to display
 		context.fillStyle = '#586373';
 		context.font = '6em "Jim Nightshade"';
+		if (levelCount >=1){
 		var message = 'Level ' + levelCount + ' cleared!';
 		context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
+		}
 		// display the message for 2 seconds before clearing it and starting a new level
 		if (timeout === undefined) {
 			timeout = window.setTimeout(function () {
@@ -129,6 +160,7 @@ function incrementScore(butterfly) {
 		butterfly.capture();
 		level.currentScore++;
 		scoreCard.innerHTML = score + level.currentScore;
+		
 
 		if (level.currentScore == level.maxScore) {
 			levelCleared = true;
